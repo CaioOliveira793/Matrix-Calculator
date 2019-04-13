@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>7</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Matrix::linha' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Matrix::{ctor}</FUNCTION>
+    <DECORATED>??0Matrix@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z</DECORATED>
+    <FUNCLINE>7</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>23</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6386</DEFECTCODE>
+    <DESCRIPTION>Saturação do buffer durante a escrita de "matrix_":  o tamanho gravável é de "i_*sizeof(float *)" bytes, porém "16" bytes podem ter sido escritos.</DESCRIPTION>
+    <FUNCTION>Matrix::allocMatrix</FUNCTION>
+    <DECORATED>?allocMatrix@Matrix@@IEAAPEAPEAMPEAPEAMHH@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>16</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>19</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaração</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>"matrix_" é um vetor de bytes de 0</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>21</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>ramificação</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Entrar neste loop, (supor "it&lt;i_")</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>29</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>declaração</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>"it" pode ser igual a 1</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>21</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>ramificação</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Continuar este loop, (supor "it&lt;i_")</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>14</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>uso</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>Escrita inválida em "matrix_", (fora do seu intervalo gravável)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>23</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Desreferenciando ponteiro NULL "matrix_". </DESCRIPTION>
+    <FUNCTION>Matrix::allocMatrix</FUNCTION>
+    <DECORATED>?allocMatrix@Matrix@@IEAAPEAPEAMPEAPEAMHH@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>16</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>19</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaração</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>"matrix_" pode ser NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>21</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>ramificação</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Entrar neste loop, (supor "it&lt;i_")</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+        <FILENAME>matrix.cpp</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>14</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>uso</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>"matrix_" não está referenciado, mas ainda pode ser NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>192</LINE>
+      <COLUMN>59</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant</FUNCTION>
+    <DECORATED>?determinant@Matrix@@QEAANXZ</DECORATED>
+    <FUNCLINE>183</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>192</LINE>
+      <COLUMN>37</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant</FUNCTION>
+    <DECORATED>?determinant@Matrix@@QEAANXZ</DECORATED>
+    <FUNCLINE>183</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>212</LINE>
+      <COLUMN>78</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>212</LINE>
+      <COLUMN>45</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>212</LINE>
+      <COLUMN>29</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>213</LINE>
+      <COLUMN>75</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>213</LINE>
+      <COLUMN>42</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>213</LINE>
+      <COLUMN>26</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>214</LINE>
+      <COLUMN>75</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>214</LINE>
+      <COLUMN>42</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\projects\calculadora vetorial\calculadora vetorial\folders\matrix</FILEPATH>
+      <FILENAME>matrix.cpp</FILENAME>
+      <LINE>214</LINE>
+      <COLUMN>26</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Matrix::determinant3x3</FUNCTION>
+    <DECORATED>?determinant3x3@Matrix@@IEAANPEAPEAM@Z</DECORATED>
+    <FUNCLINE>210</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>
