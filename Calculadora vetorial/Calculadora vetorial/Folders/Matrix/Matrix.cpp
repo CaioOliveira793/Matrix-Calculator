@@ -1,53 +1,40 @@
 #include "Matrix.h"
 #include <iostream>
+#include <vector>
 #include <cstdlib>
 #include <fstream>
 #include <string>
 
-Matrix::Matrix(std::string name_, int i_, int j_): name(name_), i(i_), j(j_) {
-	this->matrix = this->allocMatrix(this->matrix, this->i, this->j);
+Matrix::Matrix(std::string name_, unsigned int i_, unsigned int j_): name(name_), countI(i_), countJ(j_) {
+	this->allocMatrix(this->matrix, countI, countJ);
+	identity = square = row = column = null = diagonal = false;
+	order = 0;
+	determ = 0;
 }
 
 Matrix::~Matrix( ) {
 }
 
-float **Matrix::allocMatrix(float **matrix_, int i_, int j_) {
-	//verifica se o ponteiro esta vazio
-	if (matrix_ != nullptr) return matrix_;
-
-	//aloca dianamicamente a memoria, criando um vetor
-	matrix_ = (float**)malloc(i_ * sizeof(float*));
-
-	//aloca dinamicamente cada elemento do vetor criando uma matriz
-	for (int it = 0; it < i_; it++) {
-		matrix_[it] = (float*)malloc(j_ * sizeof(float));
+void Matrix::allocMatrix(std::vector<std::vector<float>> &matrix_, int i_, int j_) {
+	matrix_.resize(i_);
+	for (int x = 0; x < i_; x++) {
+		matrix_[x].resize(j_);
 	}
-	return matrix_;
-}
-
-void Matrix::freeMatrix(float **matrix_, int i_) {
-	for (int it = 0; it < i_; it++) {
-		free(matrix_[it]);
-	}
-	free(matrix_);
 }
 
 void Matrix::reallocMatrix(int newI, int newJ) {
-	this->freeMatrix(this->matrix, this->i);
-	this->i = newI;
-	this->j = newJ;
-	this->matrix = this->allocMatrix(this->matrix, this->i, this->j);
+	this->countI = newI;
+	this->countJ = newJ;
+	this->allocMatrix(this->matrix, this->countI, this->countJ);
 }
 
-//causa erros quando o usuario nao insere um numero
+//causes errors when the user does not enter a number
 void Matrix::populadorMatriz( ) {
-	//verifica se a matriz foi alocada
-	if(this->matrix != nullptr) {
+	if(!this->matrix.empty( )) {
 		std::cout << "Ocupe a matriz com numeros naturais:\n\n";
 		
-		for(int x = 0; x < this->i; x++) {
-			for(int y = 0; y < this->j; y++) {
-				//solicita numeros ao usuario
+		for(int x = 0; x < this->countI; x++) {
+			for(int y = 0; y < this->countJ; y++) {
 				std::cout << x << ", " << y << " = ";
 				std::cin >> this->matrix[x][y];
 			}
@@ -57,57 +44,52 @@ void Matrix::populadorMatriz( ) {
 	}
 }
 
-void Matrix::populadorMatriz(float value, int x, int y) {
-	this->matrix[x][y] = value;
+void Matrix::populadorMatriz(float value, int positionX, int positionY) {
+	this->matrix[positionX][positionY] = value;
 }
 
 void Matrix::checkMatrixFetures( ) {
-	this->linha = (this->i == 1) ? true : false;
-	this->coluna = (this->j == 1) ? true : false;
-	this->quadrada = (this->i == this->j) ? true : false;
-	this->ordem = (this->quadrada) ? this->i : false;
+	this->row = (this->countI == 1) ? true : false;
+	this->column = (this->countJ == 1) ? true : false;
+	this->square = (this->countI == this->countJ) ? true : false;
+	this->order = (this->square) ? this->countI : false;
 
-	//define como verdade para as verificacoes mudarem se necessario
-	this->diagonal = this->identidade = this->nula = true;
-	if (!this->quadrada) {
-		this->diagonal = this->identidade = false;
+	//define as true for verifications change them if necessary
+	this->diagonal = this->identity = this->null = true;
+	if (!this->square) {
+		this->diagonal = this->identity = false;
 	}
-	//percorre toda a matriz
-	for (int x = 0; x < this->i; x++) {
-		for (int y = 0; y < this->j; y++) {
+	//runs all matrix
+	for (int x = 0; x < this->countI; x++) {
+		for (int y = 0; y < this->countJ; y++) {
 			if ((x != y) and (matrix[x][y] != 0)) {
-				//fora da diagonal principal e diferente de 0
-				this->diagonal = this->identidade = this->nula = false;
+				//outside the main diagonal and different to 0
+				this->diagonal = this->identity = this->null = false;
 				break;
 			} else {
-				//dentro da diagonal pricipal:
-				if (matrix[x][y] != 1) this->identidade = false;
-				if (matrix[x][y] != 0) this->nula = false;
+				//inside the main diagonal
+				if (matrix[x][y] != 1) this->identity = false;
+				if (matrix[x][y] != 0) this->null = false;
 			}
 		}
 	}
-	this->diagonal = (this->nula) ? false : this->diagonal;
+	this->diagonal = (this->null) ? false : this->diagonal;
 }
 
 void Matrix::printMatrix( ) {
-	//verifica se a matriz foi alocada
-	if(this->matrix != nullptr){
+	if(!this->matrix.empty( )){
 		std::cout << "Visualizacao da matriz:\n\n";
 
-		//indicadores de coluna
-		for(int it = 1; it <= this->j; it++) {
-			std::cout << "	" << it;
-		}
+		//column indicators
+		for (int colInd = 0; colInd < this->countJ; colInd++) std::cout << "\t" << colInd;
 
 		std::cout << "\n\n\n";
-		int tab = 1;
-		for(int x = 0; x < this->i; x++, tab++) {
-			//indicadores de linha
-			std::cout << tab << "	";
+		for(int rowInd = 0; rowInd < this->countI; rowInd++) {
+			//row indicators
+			std::cout << rowInd << "\t";
 
-			for(int y = 0; y < this->j; y++) {
-				//impressao da matriz
-				std::cout << this->matrix[x][y] << "	";
+			for(int y = 0; y < this->countJ; y++) {
+				std::cout << this->matrix[rowInd][y] << "\t";
 			}
 			std::cout << "\n\n\n";
 		}
@@ -117,20 +99,16 @@ void Matrix::printMatrix( ) {
 void Matrix::printMatrix(std::ofstream &file) {
 	file << "Visualizacao da matriz:\n\n";
 
-	//indicadores de coluna
-	for (int it = 1; it <= this->j; it++) {
-		file << "	" << it;
-	}
+	//column indicators
+	for (int colInd = 1; colInd <= this->countJ; colInd++) file << "\t" << colInd;
 
 	file << "\n\n\n";
-	int tab = 1;
-	for (int x = 0; x < this->i; x++, tab++) {
-		//indicadores de linha
-		file << tab << "	";
+	for (int rowInd = 0; rowInd < this->countI; rowInd++) {
+		//row indicators
+		file << rowInd << "\t";
 
-		for (int y = 0; y < this->j; y++) {
-			//impressao da matriz
-			file << this->matrix[x][y] << "	";
+		for (int y = 0; y < this->countJ; y++) {
+			file << this->matrix[rowInd][y] << "\t";
 		}
 		file << "\n\n\n";
 	}
@@ -138,34 +116,30 @@ void Matrix::printMatrix(std::ofstream &file) {
 
 void Matrix::printFetures( ) {
 	std::cout << "Caracteristicas da matriz:\n\n"
-		<< "Quantidade de linhas...: " << this->i << "\n"
-		<< "Quantidade de colunas..: " << this->j << "\n"
-		<< "Quantidade de elementos: " << this->i << " * "
-		<< this->j << " = " << (this->i * this->j) << "\n"
-		<< "Matriz linha...........: " << this->linha << "\n"
-		<< "Matriz coluna..........: " << this->coluna << "\n"
-		<< "Matriz quadrada........: " << this->quadrada << "\n"
-		<< "Ordem da matriz........: " << this->ordem << "\n"
+		<< "Quantidade de elementos: " << this->countI << " * "
+		<< this->countJ << " = " << (this->countI * this->countJ)
+		<< "\n" << "Matriz linha...........: " << this->row << "\n"
+		<< "Matriz coluna..........: " << this->column << "\n"
+		<< "Matriz quadrada........: " << this->square << "\n"
+		<< "Ordem da matriz........: " << this->order << "\n"
 		<< "Determinante da matriz.: " << this->determ << "\n"
 		<< "Matriz diagonal........: " << this->diagonal << "\n"
-		<< "Matriz identidade......: " << this->identidade << "\n"
-		<< "Matriz nula............: " << this->nula << "\n\n\n";
+		<< "Matriz identidade......: " << this->identity << "\n"
+		<< "Matriz nula............: " << this->null << "\n\n\n";
 }
 
 void Matrix::printFetures(std::ofstream &file) {
 	file << "Caracteristicas da matriz:\n\n"
-		<< "Quantidade de linhas...: " << this->i << "\n"
-		<< "Quantidade de colunas..: " << this->j << "\n"
-		<< "Quantidade de elementos: " << this->i << " * "
-		<< this->j << " = " << (this->i * this->j) << "\n"
-		<< "Matriz linha...........: " << this->linha << "\n"
-		<< "Matriz coluna..........: " << this->coluna << "\n"
-		<< "Matriz quadrada........: " << this->quadrada << "\n"
-		<< "Ordem da matriz........: " << this->ordem << "\n"
+		<< "Quantidade de elementos: " << this->countI << " * "
+		<< this->countJ << " = " << (this->countI * this->countJ)
+		<< "\n" << "Matriz linha...........: " << this->row << "\n"
+		<< "Matriz coluna..........: " << this->column << "\n"
+		<< "Matriz quadrada........: " << this->square << "\n"
+		<< "Ordem da matriz........: " << this->order << "\n"
 		<< "Determinante da matriz.: " << this->determ << "\n"
 		<< "Matriz diagonal........: " << this->diagonal << "\n"
-		<< "Matriz identidade......: " << this->identidade << "\n"
-		<< "Matriz nula............: " << this->nula << "\n\n";
+		<< "Matriz identidade......: " << this->identity << "\n"
+		<< "Matriz nula............: " << this->null << "\n\n";
 }
 
 void Matrix::exportMatrixTxt( ) {
@@ -180,129 +154,176 @@ void Matrix::exportMatrixTxt( ) {
 	file.close( );
 }
 
-double Matrix::determinant( ) {
-	//verifica se a matriz foi alocada
-	if (this->matrix == nullptr) return this->determ;
+int Matrix::zerosInColumn(std::vector<std::vector<float>>& matrix_, int column_) {
+	int zeroCount = 0;
 
-	if (this->ordem > 3)
-		this->determ = this->determinant(this->matrix, this->ordem);
-	else if (this->ordem == 3)
-		this->determ = this->determinant3x3(this->matrix);
-	else if (this->ordem == 2)
-		this->determ = (this->matrix[0][0] * this->matrix[1][1]) - (this->matrix[0][1] * this->matrix[1][0]);
-	else if (this->ordem == 1)
-		this->determ = this->matrix[0][0];
-
-	//se todos derem falso nao e possivel calcular a determinante
-	return this->determ;
+	for (int i = 0; i < matrix_.size( ); i++) {
+		if (matrix_[i][column_] == 0) zeroCount++;
+	}
+	return zeroCount;
 }
 
-double Matrix::determinant(float **matrix_, int ordem_) {
-	double det;
-	
-	if (ordem_ > 3)
-		det = (matrix_[0][0] == 1) ? this->determinantChio(matrix_, ordem_) : this->determinantLaPlace(matrix_, ordem_);
-	else det = this->determinant3x3(matrix_);
+int Matrix::zerosInLine(std::vector<std::vector<float>>& matrix_, int line_) {
+	int zeroCount = 0;
+
+	for (int i = 0; i < matrix_[line_].size( ); i++) {
+		if (matrix_[line_][i] == 0) zeroCount++;
+	}
+	return zeroCount;
+}
+
+double Matrix::determinant(int method) {
+	//checks if the matrix has been filled
+	if (this->matrix.empty( )) return this->determ;
+
+	if (this->order == 0) return this->determ;	//the matrix doesn't have determinant
+	else if (this->order == 1) this->determ = this->matrix[0][0];
+	else if (method == Gauss) this->determ = this->determinantGauss(this->matrix, this->order);
+	else if (method == LaPlace) this->determ = this->determinantLaPlace(this->matrix, this->order);
+	else if (method == Chio) this->determ = this->determinantChio(this->matrix, this->order);
+}
+
+double Matrix::determinant3x3(std::vector<std::vector<float>>& matrix_) {
+
+	double det = (matrix_[1][0] * matrix_[2][1] - matrix_[1][1] * matrix_[2][0]) * matrix_[0][2];
+	det += (matrix_[1][2] * matrix_[2][0] - matrix_[1][0] * matrix_[2][2]) * matrix_[0][1];
+	det += (matrix_[1][1] * matrix_[2][2] - matrix_[1][2] * matrix_[2][1]) * matrix_[0][0];
 
 	return det;
 }
 
-double Matrix::determinant3x3(float **matrix_) {
+double Matrix::determinantLaPlace(std::vector<std::vector<float>>& matrix_, int order_) {
+	if (order_ == 3) return this->determinant3x3(matrix_);
 
-	double det = (matrix_[1][1] * matrix_[2][2] - matrix_[1][2] * matrix_[2][1]) * matrix_[0][0];
-		  det += (matrix_[1][2] * matrix_[2][0] - matrix_[1][0] * matrix_[2][2]) * matrix_[0][1];
-		  det += (matrix_[1][0] * matrix_[2][1] - matrix_[1][1] * matrix_[2][0]) * matrix_[0][2];
-
-	return det;
-}
-
-double Matrix::determinantLaPlace(float **matrix_, int ordem_) {
 	double det = 0;
-	int ordemCofator = ordem_ - 1;
-	//percorre os elementos da ultima coluna em ordem crescente
-	for (int lin = 0; lin < ordem_; lin++) {
-		//caso igual a zero, nao sera calculado
-		if (matrix_[lin][ordemCofator] == 0) continue;
+	int orderCofactor = order_ - 1;
 
-		float **cofator = nullptr;
-		cofator = this->allocMatrix(cofator, ordemCofator, ordemCofator);
+	//scrolls through the elements of the last column in ascending order
+	for (int lin = 0; lin < order_; lin++) {
+		if (matrix_[lin][orderCofactor] == 0) continue;
+		
+		std::vector<std::vector<float>> cofactor = matrix_;
+		//erase unused elements
+		cofactor.erase(cofactor.begin( ) + lin);
+		for (int i = 0; i < orderCofactor; i++) {
+			cofactor[i].erase(cofactor[i].end( ) - 1);
+		}
 
-		//ciclo de passagem de valores para o cofator
-		for (int x = 0, x_ = 0 ; x < ordemCofator; x++, x_++) {
-			for (int y = 0; y < ordemCofator; y++) {
-				if (x_ == lin) x_++;
-				cofator[x][y] = matrix_[x_][y];
+		det += (((lin + orderCofactor) % 2 == 0) ? 1 : -1) * matrix_[lin][orderCofactor]
+			* this->determinantLaPlace(cofactor, orderCofactor);
+	}
+	return det;
+}
+
+double Matrix::determinantChio(std::vector<std::vector<float>> matrix_, int order_) {
+	if (order_ == 1) return matrix_[0][0];
+
+	double det = 0;
+	float divider = 1;
+	int orderCofactor = order_ - 1;
+	bool changeSing = false;
+	std::vector<std::vector<float>> cofactor(orderCofactor, std::vector<float>(orderCofactor));
+
+	if (matrix_[0][0] != 1 and matrix_[0][0] != 0) {
+		divider = matrix_[0][0];
+		for (int i = 0; i < order_; i++) {
+			matrix_[0][i] /= divider;
+		}
+	} else if (matrix_[0][0] == 0) {
+		//change the first element to 1 permultando com a linha x
+		int x; float multiplier = 0;
+		for (x = 1; x < order_ and matrix_[x][0] != 0; x++) {
+			multiplier = -(matrix_[0][0] - 1) / matrix_[x][0];
+			break;
+		}
+		if (x == order_ - 1) return 0.0;	//the first column has all elements iqual to 0
+		for (int i = 0; i < order_; i++) {
+			matrix_[0][i] += multiplier * matrix_[x][i];
+		}
+	}
+	//reducao da matriz pelo metodo de Chio
+	for (int y = 1; y < order_; y++) {
+		for (int x = 1; x < order_; x++) {
+			cofactor[x - 1][y - 1] = matrix_[x][y] - matrix_[x][0] * matrix_[0][y];
+		}
+	}
+
+	det = divider * this->determinantChio(cofactor, orderCofactor);
+	if (changeSing) det = -det;	//verifica se e necessario trocar o sinal
+	return det;
+}
+
+double Matrix::determinantGauss(std::vector<std::vector<float>> matrix_, int order_) {
+	float multiplier;
+	double det = 1;
+	int zeroCount = 0;
+	bool changeSing = false;
+
+	for (int x = 0; x < order_ - 1; x++) {
+		for (int y = x + 1; y < order_; y++) {
+			if (matrix_[x][x] == 0) {	//impede a divisao por 0
+				auto vectorTemp = matrix_[x];
+				matrix_[x] = matrix_[x + 1];
+				matrix_[x + 1] = vectorTemp;
+				changeSing = !changeSing;
 			}
-		}
-		det += pow(-1, lin + ordemCofator) * matrix_[lin][ordemCofator] * this->determinant(cofator, ordemCofator);
-		//libera a memoria do cofator
-		this->freeMatrix(cofator, ordemCofator);
-	}
-	return det;
-}
-
-double Matrix::determinantChio(float **matrix_, int ordem_) {
-	double det = 0;
-	int ordemCofator = ordem_ - 1;
-	float **cofator = nullptr;
-	cofator = this->allocMatrix(cofator, ordemCofator, ordemCofator);
-
-	for (int y = 1; y < ordem_; y++) {
-		for (int x = 1; x < ordem_; x++) {
-			cofator[x - 1][y - 1] = matrix_[x][y] - matrix_[x][0] * matrix_[0][y];
+			multiplier = -matrix_[y][x] / matrix_[x][x];
+			
+			for (int i = x; i < order_; i++) {
+				matrix_[y][i] += multiplier * matrix_[x][i];
+				if (matrix_[y][i] == 0) zeroCount++;
+			}
+			if (zeroCount == order_ - x) return 0.0;
+			zeroCount = 0;
 		}
 	}
-	det = this->determinant(cofator, ordemCofator);
-	
-	//libera a memoria do cofator
-	this->freeMatrix(cofator, ordemCofator);
-
+	for (int i = 0; i < order_; i++) det *= matrix_[i][i];	//calcula o resultado
+	if (changeSing) det = -det;	//verifica se e necessario trocar o sinal
 	return det;
 }
 
 Matrix Matrix::transpose( ) {
-	Matrix res(this->name + " transposta", this->j, this->i);
+	Matrix result(this->name + " transposta", this->countJ, this->countI);
 
-	for (int y = 0; y < res.getJ( ); y++) {
-		for (int x = 0; x < res.getI( ); x++) {
-			res.populadorMatriz(this->matrix[y][x], x, y);
+	for (int y = 0; y < result.getJ( ); y++) {
+		for (int x = 0; x < result.getI( ); x++) {
+			result.populadorMatriz(this->matrix[y][x], x, y);
 		}
 	}
-	res.checkMatrixFetures( );
-
-	return res;
+	result.checkMatrixFetures( );
+	return result;
 }
 
-float Matrix::getValue(int x, int y) {
-	return this->matrix[x][y];
+float Matrix::getValue(int positionX, int positionY) {
+	return this->matrix[positionX][positionY];
 }
 
 int Matrix::getI( ) {
-	return this->i;
+	return this->countI;
 }
 
 int Matrix::getJ( ) {
-	return this->j;
+	return this->countJ;
 }
 
 bool Matrix::getIdentidade( ) {
-	return this->identidade;
+	return this->identity;
 }
 
 bool Matrix::getQuadrada( ) {
-	return this->quadrada;
+	return this->square;
 }
 
 bool Matrix::getLinha( ) {
-	return this->linha;
+	return this->row;
 }
 
 bool Matrix::getColuna( ) {
-	return this->coluna;
+	return this->column;
 }
 
 bool Matrix::getNula( ) {
-	return this->nula;
+	return this->null;
 }
 
 bool Matrix::getDiagonal( ) {
@@ -310,7 +331,7 @@ bool Matrix::getDiagonal( ) {
 }
 
 int Matrix::getOrdem( ) {
-	return this->ordem;
+	return this->order;
 }
 
 double Matrix::getDeterminant( ) {

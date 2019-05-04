@@ -1,56 +1,60 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 class Matrix {
 protected:
-	//quantidade de linhas e colunas da matriz
-	int i, j;
-	//caracteristicas da matriz
-	bool identidade, quadrada, linha, coluna, nula, diagonal; int ordem; double determ;
-	//matriz[n][n]
-	float **matrix = nullptr;
-
-	float **allocMatrix(float **matrix_, int i_, int j_);	//aloca a matriz conforme o numero de linhas e colunas
-	void freeMatrix(float **matrix_, int i_);	//desaloca toda memoria da matriz
-	void reallocMatrix(int newI, int newJ);	//realoca a matriz conforme o numero de linhas e colunas
-	void printMatrix(std::ofstream &file);	//mostra ao usuario toda a matriz
-	void printFetures(std::ofstream &file);	//exporta todas as caracteristicas da matriz
-	double determinant(float **matrix_, int ordem);	//seleciona o melhor modo para calcular a determinante
-	double determinant3x3(float **matrix_);	//calcula a determinante da matriz 3x3
-	double determinantLaPlace(float **matrix, int ordem);	//calcula determinante pelo metodo de La Place
-	double determinantChio(float **matrix, int ordem);	//calcula determinante pelo metodo de La Place
+	//number of rows and columns in the matrix
+	unsigned int countI, countJ;
+	//matrix fetures:
+	bool identity, square, row, column, null, diagonal; unsigned int order; double determ;
+	//matrix[i][j]
+	std::vector<std::vector<float>> matrix;
+	
+	void allocMatrix(std::vector<std::vector<float>> &matrix_, int i_, int j_);
+	void reallocMatrix(int newI, int newJ);
+	void printMatrix(std::ofstream &file);
+	void printFetures(std::ofstream &file);
+	int zerosInColumn(std::vector<std::vector<float>>& matrix_, int column_);
+	int zerosInLine(std::vector<std::vector<float>>& matrix_, int line_);
+	double determinant3x3(std::vector<std::vector<float>>& matrix_);
+	double determinantLaPlace(std::vector<std::vector<float>>& matrix_, int order_);
+	double determinantChio(std::vector<std::vector<float>> matrix_, int order_);
+	double determinantGauss(std::vector<std::vector<float>> matrix_, int order_);
 
 public:
-	//nome da matriz
+	//the name of matrix
 	std::string name;
 
-	Matrix(std::string _name, int _i, int _j);	//metodo construtor
-	~Matrix( );	//metodo destrutor
+	enum method {Gauss = 1, LaPlace, Chio};
 
-	void populadorMatriz( );	//preenche toda matriz com inputs do usuario
-	void populadorMatriz(float value, int x, int y);	//preenche um elemento da matriz
-	void checkMatrixFetures( );	//verifica e armazena qual e o tipo de matriz
-	void printMatrix( );	//mostra ao usuario toda a matriz
-	void printFetures( );	//mostra ao usuario todas as caracteristicas da matriz
-	void exportMatrixTxt( );	//exporta a matriz para um arquivo.txt
-	double determinant( );	//calcula a determinante da matriz
-	Matrix transpose( );	//cria uma matriz transposta
+	Matrix(std::string _name, unsigned int _i, unsigned int _j);
+	~Matrix( );
 
-	float getValue(int x, int y);	//retorna o valor correspondente da matriz
-	int getI( );	//retorna o numero de linhas
-	int getJ( );	//retorna o numero de colunas
-	bool getIdentidade( );	//retorna se e uma matriz identidade
-	bool getQuadrada( );	//retorna se e uma matriz quadrada
-	bool getLinha( );		//retorna se e uma matriz linha
-	bool getColuna( );		//retorna se e uma matriz coluna
-	bool getNula( );		//retorna se e uma matriz nula
-	bool getDiagonal( );	//retorna se e uma matriz diagonal
-	int getOrdem( );		//retorna a ordem da matriz
-	double getDeterminant( );	//retorna a determinante da matriz
+	void populadorMatriz( );
+	void populadorMatriz(float value, int positionX, int positionY);
+	void checkMatrixFetures( );
+	void printMatrix( );
+	void printFetures( );
+	void exportMatrixTxt( );
+	double determinant(int method);
+	Matrix transpose( );
+
+	float getValue(int positionX, int positionY);
+	int getI( );
+	int getJ( );
+	bool getIdentidade( );
+	bool getQuadrada( );
+	bool getLinha( );
+	bool getColuna( );
+	bool getNula( );
+	bool getDiagonal( );
+	int getOrdem( );
+	double getDeterminant( );
 };
 
-//declaracoes das funcoes do arquivo functionsMatrix.cpp
+//declaracoes de funcoes do arquivo functionsMatrix.cpp
 Matrix soma(std::string newName, Matrix & m1, Matrix & m2);
 Matrix soma(std::string newName, Matrix & m1, float & n2);
 Matrix subtracao(std::string newName, Matrix & m1, Matrix & m2);

@@ -1,117 +1,131 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(411,5): warning MSB8028: The intermediate directory (C:\Projects\Calculadora vetorial\bin\intermediates\x64\Debug\) contains files shared from another project (Calculadora vetorial.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(411,5): warning MSB8028: The intermediate directory (C:\Repos\Matrix-Calculator\Calculadora vetorial\bin\intermediates\x64\Debug\) contains files shared from another project (Calculadora vetorial.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Matrix.cpp
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(36): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(37): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(63): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(64): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(84): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(87): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(91): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(103): warning C4018: '<=': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(106): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(110): warning C4018: '<': incompatibilidade de signed/unsigned
   functionsMatrix.cpp
   main.cpp
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Source Files\main.cpp(11): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Source Files\main.cpp(14): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
   Gerando Código...
-  Calculadora vetorial.vcxproj -> C:\Projects\Calculadora vetorial\bin\x64\Debug\Matrix Calculator.exe
+C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Folders\Matrix\Matrix.cpp(184): warning C4715: 'Matrix::determinant': nem todos os caminhos de controle retornam um valor
+  Calculadora vetorial.vcxproj -> C:\Repos\Matrix-Calculator\Calculadora vetorial\bin\x64\Debug\Matrix Calculator.exe
 
 Resumo do Desempenho do Projeto:
-    10391 ms C:\Projects\Calculadora vetorial\Calculadora vetorial\Calculadora vetorial.vcxproj   1 chamadas
-              10391 ms Build                                      1 chamadas
+     7459 ms C:\Repos\Matrix-Calculator\Calculadora vetorial\Calculadora vetorial\Calculadora vetorial.vcxproj   1 chamadas
+               7459 ms Build                                      1 chamadas
 
 Resumo do Desempenho do Destino:
-        0 ms _ResourceCompile                           1 chamadas
+        0 ms AfterResourceCompile                       1 chamadas
+        0 ms AfterLink                                  1 chamadas
         0 ms PreLinkEvent                               1 chamadas
         0 ms PrepareResourceNames                       1 chamadas
         0 ms CreateCustomManifestResourceNames          1 chamadas
         0 ms ComputeManifestInputsTargets               1 chamadas
         0 ms ComputeLinkInputsFromProject               1 chamadas
         0 ms ComputeCLGeneratedLinkInputs               1 chamadas
-        0 ms ComputeCLOutputs                           1 chamadas
+        0 ms ComputeCustomBuildOutput                   1 chamadas
         0 ms ComputeManifestGeneratedLinkerInputs       1 chamadas
-        0 ms AfterLink                                  1 chamadas
         0 ms ComputeRCGeneratedLinkInputs               1 chamadas
+        0 ms ComputeRCOutputs                           1 chamadas
         0 ms BeforeLink                                 1 chamadas
         0 ms BuildLinkTraverse                          1 chamadas
         0 ms BuildCompile                               1 chamadas
         0 ms _BuildCompileAction                        1 chamadas
         0 ms AfterBuildCompileEvent                     1 chamadas
-        0 ms AfterResourceCompile                       1 chamadas
+        0 ms _ResourceCompile                           1 chamadas
         0 ms BeforeResourceCompile                      1 chamadas
         0 ms _ClCompile                                 1 chamadas
-        0 ms ComputeRCOutputs                           1 chamadas
-        0 ms SelectClCompile                            1 chamadas
         0 ms _Link                                      1 chamadas
-        0 ms _Manifest                                  1 chamadas
+        0 ms AfterClCompile                             1 chamadas
+        0 ms _ALink                                     1 chamadas
+        0 ms RegisterOutput                             1 chamadas
         0 ms AfterBuild                                 1 chamadas
         0 ms BuildLink                                  1 chamadas
         0 ms _BuildLinkAction                           1 chamadas
         0 ms PostBuildEvent                             1 chamadas
         0 ms PrepareForRun                              1 chamadas
+        0 ms CopyFilesToOutputDirectory                 1 chamadas
         0 ms _CheckForCompileOutputs                    1 chamadas
         0 ms _CopySourceItemsToOutputDirectory          1 chamadas
         0 ms GetCopyToOutputDirectoryItems              1 chamadas
-        0 ms _ALink                                     1 chamadas
-        0 ms GetCopyToOutputDirectoryXamlAppDefs        1 chamadas
+        0 ms _Deploy                                    1 chamadas
         0 ms _Appverifier                               1 chamadas
         0 ms CreateSatelliteAssemblies                  1 chamadas
+        0 ms _GenerateSatelliteAssemblyInputs           1 chamadas
         0 ms _BscMake                                   1 chamadas
         0 ms MakeDirsForBscMake                         1 chamadas
         0 ms ComputeCLCompileGeneratedSbrFiles          1 chamadas
         0 ms _XdcMake                                   1 chamadas
-        0 ms MakeDirsForXdcMake                         1 chamadas
+        0 ms ComputeCLCompileGeneratedXDCFiles          1 chamadas
         0 ms ResolvedXDCMake                            1 chamadas
-        0 ms _Deploy                                    1 chamadas
-        0 ms SelectCustomBuild                          1 chamadas
+        0 ms _Manifest                                  1 chamadas
+        0 ms SelectClCompile                            1 chamadas
         0 ms Build                                      1 chamadas
-        0 ms FixupCLCompileOptions                      1 chamadas
-        0 ms AfterResolveReferences                     1 chamadas
+        0 ms _Midl                                      1 chamadas
         0 ms BeforeBuildGenerateSources                 1 chamadas
+        0 ms ResolveReferences                          1 chamadas
+        0 ms AfterResolveReferences                     1 chamadas
         0 ms PreBuildEvent                              1 chamadas
         0 ms _SelectedFiles                             1 chamadas
         0 ms ExpandSDKReferences                        1 chamadas
-        0 ms _Xsd                                       1 chamadas
-        0 ms MakeDirsForMidl                            1 chamadas
         0 ms ResolveSDKReferences                       1 chamadas
-        0 ms AfterMidl                                  1 chamadas
-        0 ms _Midl                                      1 chamadas
-        0 ms ResolveReferences                          1 chamadas
+        0 ms SetCABuildNativeEnvironmentVariables       1 chamadas
+        0 ms _Xsd                                       1 chamadas
         0 ms GetResolvedWinMD                           1 chamadas
-        0 ms AfterBuildGenerateSources                  1 chamadas
+        0 ms GetReferenceAssemblyPaths                  1 chamadas
+        0 ms ComputeMIDLGeneratedCompileInputs          1 chamadas
+        0 ms AfterMidl                                  1 chamadas
+        0 ms SelectCustomBuild                          1 chamadas
+        0 ms BuildGenerateSourcesTraverse               1 chamadas
+        0 ms AfterBuildGenerateSourcesEvent             1 chamadas
+        0 ms GetFrameworkPaths                          1 chamadas
         0 ms _BuildGenerateSourcesAction                1 chamadas
         0 ms BuildGenerateSources                       1 chamadas
         0 ms BuildCompileTraverse                       1 chamadas
         0 ms BeforeClCompile                            1 chamadas
-        0 ms PrepareProjectReferences                   1 chamadas
         0 ms ComputeCLInputPDBName                      1 chamadas
+        0 ms PrepareProjectReferences                   1 chamadas
         0 ms ComputeReferenceCLInput                    1 chamadas
-        0 ms _SplitProjectReferencesByFileExistence     1 chamadas
         0 ms BeforeResolveReferences                    1 chamadas
+        0 ms _PrepareForReferenceResolution             1 chamadas
         0 ms _PrepareForBuild                           1 chamadas
-        0 ms AfterBuildGenerateSourcesEvent             1 chamadas
-        1 ms SetCABuildNativeEnvironmentVariables       1 chamadas
-        1 ms _GenerateSatelliteAssemblyInputs           1 chamadas
-        1 ms RegisterOutput                             1 chamadas
-        1 ms ResolveAssemblyReferences                  1 chamadas
+        0 ms AfterBuildGenerateSources                  1 chamadas
+        1 ms _GetProjectReferenceTargetFrameworkProperties   1 chamadas
         1 ms MakeDirsForCl                              1 chamadas
         1 ms ComputeLinkSwitches                        1 chamadas
-        1 ms ComputeCustomBuildOutput                   1 chamadas
-        1 ms MakeDirsForResourceCompile                 1 chamadas
-        1 ms BuildGenerateSourcesTraverse               1 chamadas
-        1 ms ComputeLegacyManifestEmbedding             1 chamadas
         1 ms ComputeLinkImportLibraryOutputsForClean    1 chamadas
-        1 ms DoLinkOutputFilesMatch                     1 chamadas
-        1 ms CopyFilesToOutputDirectory                 1 chamadas
-        1 ms ComputeCLCompileGeneratedXDCFiles          1 chamadas
-        1 ms ComputeMIDLGeneratedCompileInputs          1 chamadas
-        1 ms GetFrameworkPaths                          1 chamadas
-        1 ms _PrepareForReferenceResolution             1 chamadas
         1 ms SetBuildDefaultEnvironmentVariables        1 chamadas
+        1 ms GetCopyToOutputDirectoryXamlAppDefs        1 chamadas
+        1 ms ComputeCLOutputs                           1 chamadas
+        1 ms MakeDirsForMidl                            1 chamadas
+        1 ms _CheckWindowsSDKInstalled                  1 chamadas
+        1 ms MakeDirsForResourceCompile                 1 chamadas
+        1 ms FixupCLCompileOptions                      1 chamadas
+        1 ms _SplitProjectReferencesByFileExistence     1 chamadas
+        1 ms MakeDirsForXdcMake                         1 chamadas
+        1 ms SplitResourcesByCulture                    1 chamadas
+        1 ms ResolveAssemblyReferences                  1 chamadas
+        1 ms DoLinkOutputFilesMatch                     1 chamadas
+        2 ms MakeDirsForLink                            1 chamadas
         2 ms AssignProjectConfiguration                 1 chamadas
-        2 ms SplitResourcesByCulture                    1 chamadas
-        2 ms _GetProjectReferenceTargetFrameworkProperties   1 chamadas
-        3 ms AssignTargetPaths                          1 chamadas
+        2 ms AssignTargetPaths                          1 chamadas
+        3 ms FinalizeBuildStatus                        1 chamadas
         3 ms WarnCompileDuplicatedFilename              1 chamadas
-        3 ms MakeDirsForLink                            1 chamadas
-        4 ms FinalizeBuildStatus                        1 chamadas
-        4 ms AfterClCompile                             1 chamadas
-        6 ms InitializeBuildStatus                      1 chamadas
-       21 ms GetReferenceAssemblyPaths                  1 chamadas
-       41 ms ResolveProjectReferences                   1 chamadas
-       51 ms CopyFileToFolders                          1 chamadas
-      109 ms _CheckWindowsSDKInstalled                  1 chamadas
-      195 ms SetTelemetryEnvironmentVariables           1 chamadas
-      673 ms PrepareForBuild                            1 chamadas
-      835 ms _CheckForInvalidConfigurationAndPlatform   1 chamadas
-     3283 ms Link                                       1 chamadas
-     5127 ms ClCompile                                  1 chamadas
+        8 ms SetTelemetryEnvironmentVariables           1 chamadas
+       10 ms CopyFileToFolders                          1 chamadas
+       11 ms InitializeBuildStatus                      1 chamadas
+       12 ms _CheckForInvalidConfigurationAndPlatform   1 chamadas
+       15 ms ComputeLegacyManifestEmbedding             1 chamadas
+       24 ms _HandlePackageFileConflicts                1 chamadas
+       25 ms PrepareForBuild                            1 chamadas
+       27 ms ResolveProjectReferences                   1 chamadas
+     2480 ms Link                                       1 chamadas
+     4808 ms ClCompile                                  1 chamadas

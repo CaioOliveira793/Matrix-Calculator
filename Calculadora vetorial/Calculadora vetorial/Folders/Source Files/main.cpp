@@ -1,40 +1,25 @@
 #include <iostream>
 #include <cstdlib>
-#include <queue>
+#include <ctime>
 
 #include "..\Matrix\Matrix.h"
 
-#define ordem 12
+#define ORDEM 3
 
 int main( ) {
-	//Matrix m1("nome", ordem, ordem);
-	//for (int x = 0; x < ordem; x++) {
-	//	for (int y = 0; y < ordem; y++) {
-	//		m1.populadorMatriz(x + 2 * y - 7, x, y);
-	//	}
-	//}
-
-	Matrix m1("A", 2, 4);
-	m1.populadorMatriz( );
-
+	Matrix m1("nome", ORDEM, ORDEM);
+	srand(time(NULL));
+	for (int x = 0; x < ORDEM; x++) {
+		for (int y = 0; y < ORDEM; y++) {
+			m1.populadorMatriz(rand( ) % 10, x, y);
+			//m1.populadorMatriz(x + y, x, y);
+		}
+	}
+	//m1.populadorMatriz( );
 	m1.checkMatrixFetures( );
 	m1.printMatrix( );
-	system("pause");
-
-	Matrix m1T = m1.transpose( );
-	m1T.printMatrix( );
-
-	//m1.checkMatrixFetures( );
-	//m1.printMatrix( );
-	//m1.determinant( );
-	//std::cout << "\nDerterminante = " << m1.getDeterminant( ) << "\n\n";
+	std::cin.get( );
 	
-	system("pause");
-}
-
-void function( ) {
-	std::queue<Matrix> nome;
-	Matrix algo("nome", 2, 3);
-
-	nome.push(algo);
+	std::cout << "\nDerterminante = " << m1.determinant(Matrix::Gauss) << "\n\n";
+	std::cin.get( );
 }
